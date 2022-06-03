@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { useSubscribe, useFind } from 'meteor/react-meteor-data';
@@ -5,8 +6,8 @@ import { useSubscribe, useFind } from 'meteor/react-meteor-data';
 import { Modal } from './Modal';
 // eslint-disable-next-line import/no-unresolved
 import { SelectContact } from '../../components/SelectContact';
-import { ContactsCollection } from '../../../api/ContactsCollection';
-import { WalletsCollection } from '../../../api/wallet/WalletsCollection';
+import { ContactsCollection } from '../../../api/collections/ContactsCollection';
+import { WalletsCollection } from '../../../api/collections/WalletsCollection';
 // eslint-disable-next-line import/no-unresolved
 import { Loading } from '../../components/Loading';
 
@@ -30,13 +31,17 @@ export const Wallet = () => {
 
  const addTransaction = () => {
    Meteor.call('transactions.insert', {
-   isTransferring,
-   sourceWalletId: wallet._id,
+   isTransferring: '1',
+  // sourceWalletId: wallet._id,
    destinationWalletId: destinationWallet?.walletId || '',
    amount: Number(amount),
-   }, (errorResponse) => {
+   },
+   (errorResponse) => {
     if (errorResponse) {
-      setErrorMessage(errorResponse.error);
+      // eslint-disable-next-line no-unused-expressions
+      errorResponse.details?.forEach((error) => {
+        setErrorMessage(error.message);
+      });
     } else {
       setOpen(false);
       setDestinationWallet({});
@@ -48,8 +53,8 @@ export const Wallet = () => {
  };
 
  if (isLoadingContacts() || isLoadingWallets()) {
-   return <Loading />;
- }
+  return <Loading />;
+}
   return (
 
    <>

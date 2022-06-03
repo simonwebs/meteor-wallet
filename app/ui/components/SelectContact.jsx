@@ -1,9 +1,5 @@
-/* eslint-disable no-shadow */
-// @ts-nocheck
-// eslint-disable-next-line import/no-duplicates
-import React from 'react';
-// eslint-disable-next-line import/no-duplicates
-import { Fragment } from 'react';
+
+import React, { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
 
