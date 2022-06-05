@@ -12,8 +12,7 @@ import { ContactsCollection } from '../../../api/collections/ContactsCollection'
 import { WalletsCollection } from '../../../api/collections/WalletsCollection';
 // eslint-disable-next-line import/no-unresolved
 
-export const Wallet = ({ walletId }) => {
-
+export const Wallet = () => {
   const contacts = useFind(() =>
   ContactsCollection.find(
     { archived: { $ne: true } },
