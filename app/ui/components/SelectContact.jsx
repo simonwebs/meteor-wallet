@@ -59,7 +59,7 @@ className="flex-shrink-0 h-6 w-6 rounded-full"
 
                 </Listbox.Option>
               )}
-                {contacts.map((contact) => (
+                {contacts.map(() => (
                   <Listbox.Option
                     key={contact._id}
                     className={({ active }) =>

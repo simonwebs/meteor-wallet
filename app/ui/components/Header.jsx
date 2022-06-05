@@ -1,21 +1,16 @@
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
+import { Navbar } from './Navbar';
 
 
 export const Header = () => (
-    <header className="bg-indigo-600">
-      <nav className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
-        <div className="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
-          <div className="flex items-center">
-            <a href="#">
-              <span className="sr-only">Meteor Purse</span>
-              <img
-                className="h-8 w-auto"
-                src="./log/Logo.svg"
-                alt=""
-              />
-            </a>
-          </div>
-        </div>
-      </nav>
-    </header>
+
+<>
+<div className="h-7 w-full bg-green-700">
+<div className="w-fullflex items-center justify-end text-sm font-medium text-white">
+Online banking coming soon!
+</div>
+</div>
+<Navbar />
+</>
   );

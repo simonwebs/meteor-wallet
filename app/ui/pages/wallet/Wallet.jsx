@@ -1,7 +1,9 @@
-// @ts-nocheck
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import { useSubscribe, useFind } from 'meteor/react-meteor-data';
+// eslint-disable-next-line import/no-unresolved
+import { Loading } from '../../components/Loading';
+
 // eslint-disable-next-line import/no-unresolved
 import { Modal } from './Modal';
 // eslint-disable-next-line import/no-unresolved
@@ -9,11 +11,9 @@ import { SelectContact } from '../../components/SelectContact';
 import { ContactsCollection } from '../../../api/collections/ContactsCollection';
 import { WalletsCollection } from '../../../api/collections/WalletsCollection';
 // eslint-disable-next-line import/no-unresolved
-import { Loading } from '../../components/Loading';
 
-export const Wallet = () => {
-  const isLoadingContacts = useSubscribe('contacts');
-  const isLoadingWallets = useSubscribe('wallets');
+export const Wallet = ({ walletId }) => {
+
   const contacts = useFind(() =>
   ContactsCollection.find(
     { archived: { $ne: true } },
@@ -28,11 +28,11 @@ export const Wallet = () => {
   const [destinationWallet, setDestinationWallet] = React.useState({});
   const [errorMessage, setErrorMessage] = React.useState('');
 
-
+  const isLoadingContacts = useSubscribe('contacts');
+  const isLoadingWallets = useSubscribe('wallets');
  const addTransaction = () => {
    Meteor.call('transactions.insert', {
    isTransferring: '1',
-  // sourceWalletId: wallet._id,
    destinationWalletId: destinationWallet?.walletId || '',
    amount: Number(amount),
    },
