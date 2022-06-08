@@ -14,7 +14,12 @@ Meteor.methods({
         if (!walletId) {
             throw new Meteor.Error('Wallet ID is required.');
         }
-        return ContactsCollection.insert({ name, email, imageUrl, walletId, createdAt: new Date(),
+        return ContactsCollection.insert({
+          name,
+          email,
+           imageUrl,
+           walletId,
+           createdAt: new Date(),
         });
       },
     'contacts.archive'({ contactId }) {

@@ -1,4 +1,5 @@
-
+/* eslint-disable no-shadow */
+// @ts-nocheck
 import React, { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid';
@@ -14,16 +15,10 @@ export const SelectContact = ({ title, contact, setContact, contacts }) => (
         <>
           <Listbox.Label className="block text-sm font-medium text-gray-700">{title}</Listbox.Label>
           <div className="mt-1 relative">
-            <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm">
               <span className="flex items-center">
-                {contact.imageUrl && (
-                  <img
-src={contact.imageUrl}
-alt=""
-className="flex-shrink-0 h-6 w-6 rounded-full"
-                />
-                )}
-                <span className="ml-3 block truncate">{contact?.name || 'Select contact'}</span>
+                {contact?.imageUrl && (<img src={contact.imageUrl} alt="" className="flex-shrink-0 h-6 w-6 rounded-full" />)}
+                <span className="ml-3 block truncate">{contact?.name || 'Select a contact'}</span>
               </span>
               <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <SelectorIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -37,34 +32,35 @@ className="flex-shrink-0 h-6 w-6 rounded-full"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
-              {!contacts.length && (
+            <Listbox.Options className="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-32 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+               {!contact.length && (
                 <Listbox.Option
-                className={classNames(
-                  'text-gray-900',
+                className={
+                  classNames(
+                    'text-gray-900',
                     'cursor-default select-none relative py-2 pl-3 pr-9'
-                  )
-                }
-                disabled
+                  )}
+                // eslint-disable-next-line react/jsx-boolean-value
+                disabled={true}
               >
                     <div className="flex items-center">
 
                       <span
                         className={classNames(
-                          'font-normal', 'ml-3 block truncate')}
+                           'font-normal', 'ml-3 block truncate'
+                         )}
                       >
-                     No contact found.
+                        No contacts found
                       </span>
                     </div>
-
                 </Listbox.Option>
-              )}
-                {contacts.map(() => (
+               )}
+                {contacts.map((contact) => (
                   <Listbox.Option
                     key={contact._id}
                     className={({ active }) =>
                       classNames(
-                        active ? 'text-white bg-indigo-600' : 'text-gray-900',
+                        active ? 'text-white bg-cyan-600' : 'text-gray-900',
                         'cursor-default select-none relative py-2 pl-3 pr-9'
                       )
                     }
@@ -73,9 +69,16 @@ className="flex-shrink-0 h-6 w-6 rounded-full"
                     {({ selected, active }) => (
                       <>
                         <div className="flex items-center">
-                          {contact.imageUrl && (<img src={contact.imageUrl} alt="" className="flex-shrink-0 h-6 w-6 rounded-full" />)}
+                        {contact.imageUrl && (
+                          <img
+src={contact.imageUrl}
+alt=""
+className="flex-shrink-0 h-6 w-6 rounded-full"
+                          />
+                          )}
                           <span
-                            className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
+                            className={classNames(
+                              'font-normal', 'ml-3 block truncate')}
                           >
                             {contact.name}
                           </span>
@@ -84,7 +87,7 @@ className="flex-shrink-0 h-6 w-6 rounded-full"
                         {selected ? (
                           <span
                             className={classNames(
-                              active ? 'text-white' : 'text-indigo-600',
+                              active ? 'text-white' : 'text-cyan-600',
                               'absolute inset-y-0 right-0 flex items-center pr-4'
                             )}
                           >
@@ -95,7 +98,7 @@ className="flex-shrink-0 h-6 w-6 rounded-full"
                     )}
                   </Listbox.Option>
                 ))}
-              </Listbox.Options>
+            </Listbox.Options>
             </Transition>
           </div>
         </>

@@ -8,13 +8,14 @@ import { Wallet } from './pages/wallet/Wallet.jsx';
 export const App = () => (
   <div>
     <Header />
+    <React.StrictMode>
      <div className="min-h-full">
       <div className="max-w-4xl mx-auto p-2">
       <Wallet />
        <ContactForm />
      <ContactList />
-
       </div>
      </div>
+    </React.StrictMode>
   </div>
 );

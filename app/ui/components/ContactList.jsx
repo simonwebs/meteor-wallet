@@ -9,7 +9,7 @@ import { Loading } from './Loading';
 
 
 export const ContactList = () => {
-  const isLoading = useSubscribe('contacts');
+  const isLoading = useSubscribe('allContacts');
   const contacts = useFind(() =>
   ContactsCollection.find(
     { archived: { $ne: true } },
@@ -60,7 +60,6 @@ export const ContactList = () => {
 role="list"
         className="mt-4 border-t border-b border-gray-200 divide-y divide-gray-200">
           {contacts.map((contact) => (
-            // @ts-ignore
             <ContactItem key={contact._id} contact={contact} />
           ))}
         </ul>

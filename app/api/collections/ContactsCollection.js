@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'simpl-schema/dist/SimpleSchema';
 
@@ -10,14 +11,14 @@ const ContactsSchema = new SimpleSchema({
       },
        email: {
         type: String,
-        // regEx: SimpleSchema.RegEx.Email,
+         regEx: SimpleSchema.RegEx.Email,
       },
       imageUrl: {
           type: String,
       },
      walletId: {
        type: String,
-       // regEx: SimpleSchema.RegEx.Id,
+         // regEx: SimpleSchema.RegEx.Id,
    },
    createdAt: {
        type: Date,

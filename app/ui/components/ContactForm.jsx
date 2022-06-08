@@ -43,13 +43,13 @@ export const ContactForm = () => {
   };
 
   return (
-
-    <form className="mt-6">
+    <>
+    <form className="bg-gray-100 mt-6 shadow-lg rounded-md text-white">
      {error && <ErrorAlert message={error} />}
      {success && <SuccessAlert message={success} />}
       <div className="grid grid-cols-6 gap-6">
-        <div className="col-span-6 sm:col-span-6 lg:col-span-2">
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+        <div className="col-span-6 sm:col-span-6 lg:col-span-2 bg-slate-100">
+          <label htmlFor="name" className="block text-sm font-medium text-gray-600">
             Name
           </label>
           <input
@@ -86,7 +86,7 @@ export const ContactForm = () => {
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           />
         </div>
-        <div className="col-span-6 sm:col-span-3 lg:col-span-2">
+        <div className="col-span-6">
         <label htmlFor="walletId" className="block text-sm font-medium text-gray-700">
           Wallet ID
         </label>
@@ -103,11 +103,12 @@ export const ContactForm = () => {
         <button
           type="button"
           onClick={saveContact}
-          className="bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
+          className="h-10 px-6 font-semibold rounded-md bg-cyan-700/75 border text-white shadow-lg"
         >
           Save Contact
         </button>
       </div>
     </form>
+    </>
   );
 };
