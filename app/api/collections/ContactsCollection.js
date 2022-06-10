@@ -11,19 +11,16 @@ const ContactsSchema = new SimpleSchema({
       },
        email: {
         type: String,
-         regEx: SimpleSchema.RegEx.Email,
       },
       imageUrl: {
           type: String,
       },
      walletId: {
        type: String,
-         // regEx: SimpleSchema.RegEx.Id,
    },
    createdAt: {
        type: Date,
    },
   });
-
 
 ContactsCollection.attachSchema(ContactsSchema);

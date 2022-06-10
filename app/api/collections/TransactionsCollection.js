@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'simpl-schema/dist/SimpleSchema';

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Meteor } from 'meteor/meteor';
 import '../app/api/collections/TransactionsCollection';
 import '../app/api/methods/ContactsMethods';
@@ -8,15 +9,20 @@ import { ContactsCollection } from '../app/api/collections/ContactsCollection';
 import { WalletsCollection } from '../app/api/collections/WalletsCollection';
 import '../infra/CustomError';
 
-
 Meteor.startup(() => {
-  if (!WalletsCollection.find().count()) {
-    WalletsCollection.insert({
+    if (!ContactsCollection.find().count()) {
+    ContactsCollection.insert({
+  name: 'Simon Agbey',
+  email: 's.agbey@yahoo.com',
+  imageUrl: 'https://randomuser.me/api/portraits/women/7.jpg',
+  walletId: '123123',
    createdAt: new Date(),
   });
 }
-  if (!ContactsCollection.find().count()) {
-    ContactsCollection.insert({
+  if (!WalletsCollection.find().count()) {
+    WalletsCollection.insert({
+      balance: 50,
+      currency: 'GHS',
    createdAt: new Date(),
   });
 }
