@@ -11,12 +11,19 @@ const ContactsSchema = new SimpleSchema({
       },
        email: {
         type: String,
+        regEx: SimpleSchema.RegEx.Email,
       },
       imageUrl: {
           type: String,
+          optional: true,
+      },
+      archived: {
+      type: Boolean,
+      defaultValue: false,
       },
      walletId: {
        type: String,
+       // regEx: SimpleSchema.RegEx.Id,
    },
    createdAt: {
        type: Date,

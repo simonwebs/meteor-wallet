@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { Fragment, useRef } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
@@ -6,7 +7,7 @@ export const Modal = ({ open, setOpen, title, footer, body, errorMessage }) => {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10 bg-slate-400" initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog as="div" className="relative z-20 bg-slate-400" initialFocus={cancelButtonRef} onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

@@ -1,5 +1,5 @@
 import { Mongo } from 'meteor/mongo';
-import { SimpleSchema } from 'simpl-schema/dist/SimpleSchema';
+import SimpleSchema from 'simpl-schema';
 
 export const WalletsCollection = new Mongo.Collection('wallets');
 

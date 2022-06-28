@@ -35,13 +35,14 @@ export const Wallet = () => {
  const addTransaction = () => {
    Meteor.call('transactions.insert', {
    isTransferring,
+   sourceWalletId: wallet._id,
    destinationWalletId: destinationWallet?.walletId || '',
    amount: Number(amount),
    },
    (errorResponse) => {
     if (errorResponse) {
       if (errorResponse.error) {
-        setErrorMessage(errorResponse.error);
+         setErrorMessage(errorResponse.error);
       } else {
       errorResponse.details?.forEach((error) => {
         setErrorMessage(error.message);
@@ -73,8 +74,11 @@ return (
      <div className="flex-auto text-sm font-medium text-white mt-2">
      Wallet ID:
      </div>
+      <div className='text-lg font-bold pr-3 text-white'>
+        {wallet.balance}
+      </div>
        <div className="text-lg font-bold text-white">
-       {`${wallet.balance} ${wallet.currency}`}
+      {wallet.currency}
        </div>
        <h1 className="w-full flex-none text-2xl font-semibold text-white mt-2">{wallet._id}</h1>
      </div>
